@@ -4,6 +4,8 @@
 <html>
 <head>
    <meta charset="utf-8">
+     <title>Log in with your account</title>
+     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
   <title>News</title>
 </head>
 

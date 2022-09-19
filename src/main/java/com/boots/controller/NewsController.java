@@ -22,7 +22,6 @@ public class NewsController {
     @GetMapping("/news")
     public String newsList(Model model) {
         model.addAttribute("allNews", newsService.allNews());
-        List<News> list=newsService.allNews();
 
         return "news";
     }
