@@ -10,14 +10,17 @@
 </head>
 
 <body>
-<div><a href="/">Main</a>
+<div><div id="upleft">
+       <h4><a href="/">Main Page</a></h4>
+       <h4><a href="/topics">Topics</a></h4><br>
+       </div>
 <center><td><form action="/addNews" method="get"></td>
             <button type="submit">Add News</button>
     <h1>News</h1>
     <c:forEach items="${allNews}" var="news">
     <tr>
                 <br><h2>${news.title}</h2>
-                <h2>${news.content}</h2><br>
+                <td>${news.content}</td><br>
                 <td>${news.date}&nbsp</td><td>${news.user.username}</td><br><br>
               </tr>
               </c:forEach>

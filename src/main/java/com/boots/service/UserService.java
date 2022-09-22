@@ -72,4 +72,8 @@ public class UserService implements UserDetailsService {
         return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
     }
+
+    public User update(User user) {
+        return em.merge(user);
+    }
 }

@@ -14,18 +14,19 @@ import java.util.List;
 
 @Service
 public class NewsService {
-    @PersistenceContext
-    private EntityManager em;
     @Autowired
     NewsRepository newsRepository;
+    @PersistenceContext
+    private EntityManager em;
 
-    public List<News> allNews(){
+    public List<News> allNews() {
         System.out.println("11111111111111111122222222");
-        List<News> newsList=newsRepository.findAll();
+        List<News> newsList = newsRepository.findAll();
         Collections.reverse(newsList);
         return newsList;
     }
-    public boolean addNews(News news, User user){
+
+    public boolean addNews(News news, User user) {
         news.setDate(new Date());
         news.setUser(user);
 

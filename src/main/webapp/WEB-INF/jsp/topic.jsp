@@ -11,9 +11,38 @@
 </head>
 
 <body>
-<div><center>
+    <div>
+<center>
+  <h4><a href="/">Main Page</a></h4>
+<div class="d2">
 <h3>${topic.title}</h3>
+</div>
+<div class="d3">
+<td>${topic.content}</td><br><br>
+</div>
 </center>
+
+
+    </div>
+<div><center><div class="d1">>
+
+    <c:forEach items="${topicMessage}" var="message">
+    <tr>
+                <h2>${message.content}</h2><br>
+                <td>${message.createDate}&nbsp</td><td>${message.author.username}</td><br><br>
+              </tr>
+              </c:forEach>
+
+    <div>
+
+    <form method="POST"  modelAttribute="messageForm">
+             <input name="Content" type="content" placeholder="Your Message"/>
+             <button type="submit">post</button>
+                  </form>
+
+    </div>
+    </div>
+    </center>
 </div>
 </body>
 </html>

@@ -19,9 +19,10 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String message;
-    private String author;
-    private Date date;
+    private String content;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User author;
+    private Date createDate;
     @ManyToOne(fetch = FetchType.LAZY)
     private Topic topic;
 }

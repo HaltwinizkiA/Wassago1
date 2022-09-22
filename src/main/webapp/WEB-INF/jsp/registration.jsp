@@ -15,6 +15,8 @@
   <form:form method="POST" modelAttribute="userForm">
     <h2>Registration</h2>
     <div>
+     <h4><a href="/">Main Page</a></h4>
+
       <form:input type="text" path="username" placeholder="Username"
                   autofocus="true"></form:input>
       <form:errors path="username"></form:errors>

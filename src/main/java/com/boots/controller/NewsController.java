@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class NewsController {
@@ -25,14 +24,16 @@ public class NewsController {
 
         return "news";
     }
+
     @GetMapping("/addNews")
     public String addNews(Model model) {
 
         return "addNews";
     }
+
     @PostMapping("/addNews")
     public String addNews(@ModelAttribute("newsForm") @Valid News news, @AuthenticationPrincipal User user, Model model) {
-        newsService.addNews(news,user);
+        newsService.addNews(news, user);
         return "redirect:/news";
     }
 

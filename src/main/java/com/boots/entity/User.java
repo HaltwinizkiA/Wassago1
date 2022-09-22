@@ -15,9 +15,9 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min=2, message = "At least 5 characters")
+    @Size(min = 2, message = "At least 5 characters")
     private String username;
-    @Size(min=2, message = "At least 5 characters")
+    @Size(min = 2, message = "At least 5 characters")
     private String password;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<News> news;
@@ -25,6 +25,29 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<Message> messageList;
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<Topic> topicList;
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    public List<Topic> getTopicList() {
+        return topicList;
+    }
+
+    public void setTopicList(List<Topic> topicList) {
+        this.topicList = topicList;
+    }
+
+    public User() {
+    }
 
     public List<News> getNews() {
         return news;
@@ -32,9 +55,6 @@ public class User implements UserDetails {
 
     public void setNews(List<News> news) {
         this.news = news;
-    }
-
-    public User() {
     }
 
     public Long getId() {
@@ -48,6 +68,10 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -68,10 +92,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     @Override

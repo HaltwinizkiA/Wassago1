@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,5 +25,10 @@ public class TopicService {
     public Topic getTopic(Long id){
         Optional<Topic> topicFromDb = topicRepository.findById(id);
         return topicFromDb.orElse(new Topic());
+    }
+    public Topic addTopic(Topic topic,User user){
+        topic.setAuthor(user);
+        topic.setCreateDate(new Date());
+    return topicRepository.save(topic);
     }
 }

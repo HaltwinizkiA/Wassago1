@@ -12,6 +12,10 @@
 
 <body>
 <div>
+<div id="upleft">
+  <h4><a href="/">Main Page</a></h4>
+  <h4><a href="/news">News</a></h4><br>
+  </div>
   <center>
     <c:forEach items="${allTopic}" var="topic">
       <tr>

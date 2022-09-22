@@ -16,11 +16,12 @@
     <h4><a href="/login">Login</a></h4>
     <h4><a href="/registration">Registration</a></h4>
   </sec:authorize>
-  <sec:authorize access="isAuthenticated()">
-    <h4><a href="/logout">Logout</a></h4>
-  </sec:authorize>
   <h4><a href="/news">News</a></h4>
+  <h4><a href="/topics">Topics</a></h4>
   <h4><a href="/admin">Users (only Admin)</a></h4>
+  <sec:authorize access="isAuthenticated()">
+      <h4><a href="/logout">Logout</a></h4>
+    </sec:authorize>
   </center>
 </div>
 </body>

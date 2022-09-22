@@ -5,20 +5,23 @@
 <head>
    <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-  <title>Adding news</title>
+  <title>New Topic</title>
 </head>
 
 <body>
 <div id="upleft">
-<a href="/">Main Page</a><br><br>
-<a href="/news">News</a>
+<a href="/">Main</a><br><br>
+<a href="/topics">Topics</a>
+<sec:authorize access="isAuthenticated()">
+    <h4><a href="/logout">Logout</a></h4>
+  </sec:authorize>
 </div>
 
-  <center><form:form method="POST" modelAttribute="newsForm">
+  <center><form:form method="POST" modelAttribute="topicForm">
 
     <div id="below">
-    <h2>Create News</h2>
-   <form method="POST" action="/addNews">
+    <h2>Create Topic</h2>
+   <form method="POST" action="/addTopic">
 
          <input name="title" type="text" placeholder="Title" autofocus="true"/><br>
          <input name="Content" type="content" placeholder="Content"/>
