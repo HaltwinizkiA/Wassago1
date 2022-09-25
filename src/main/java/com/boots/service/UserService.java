@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -68,12 +69,17 @@ public class UserService implements UserDetailsService {
         return false;
     }
 
-    public List<User> usergtList(Long idMin) {
+    public List<User> userList(Long idMin) {
         return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
     }
-
-    public User update(User user) {
-        return em.merge(user);
+    @Transactional
+    public boolean update(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        User dbUser=em.merge(user);
+        if (dbUser!=null){
+            return false;
+        }
+        return true;
     }
 }

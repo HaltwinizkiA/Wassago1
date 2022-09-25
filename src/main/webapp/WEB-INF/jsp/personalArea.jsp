@@ -19,15 +19,15 @@
 <center>
 <h2>Personal Area<h2>
 <form:form method="POST" modelAttribute="userForm">
-
 <h3>change password<h3>
+
 <div>
 <form method="POST" action="/personalArea">
       <input name="password"type="password" path="password" placeholder="Password"/>
 <br>
       <input name="passwordConfirm"input type="password" path="passwordConfirm"
                   placeholder="Confirm your password"/><br>
-      <form:errors path="password"></form:errors>
+      <form:errors path="passwordError"></form:errors><br>
         ${passwordError}
     <button type="submit">Submit</button>
     </div>

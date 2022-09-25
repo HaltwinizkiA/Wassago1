@@ -18,6 +18,7 @@
   </sec:authorize>
   <h4><a href="/news">News</a></h4>
   <h4><a href="/topics">Topics</a></h4>
+   <h4><a href="/personalArea">Account</a></h4>
   <h4><a href="/admin">Users (only Admin)</a></h4>
   <sec:authorize access="isAuthenticated()">
       <h4><a href="/logout">Logout</a></h4>

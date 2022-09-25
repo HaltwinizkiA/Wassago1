@@ -21,25 +21,27 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/personalArea")
-    public String getUser( Model model){
-       return "personalArea";
+    public String getUser(Model model){
+        model.addAttribute("userForm", new User());
+
+        return "personalArea";
     }
 
     @PostMapping("/personalArea")
     public String changePassword(@ModelAttribute("userForm") @Valid User userForm,@AuthenticationPrincipal User user, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "personalArea";
         }
         if (!userForm.getPassword().equals(userForm.getPasswordConfirm())){
             model.addAttribute("passwordError", "Password mismatch");
-            return "registration";
-        }
-        if (!userService.saveUser(userForm)){
-            model.addAttribute("usernameError", "A user with the same name already exists");
-            return "registration";
+            return "personalArea";
         }
         user.setPassword(userForm.getPassword());
-        userService.update(user);
-        return "redirect:/personalArea";
+        if(userService.update(user)){
+            model.addAttribute("passwordError", "Success");
+            return "personalArea";
+        }else {
+            return "personalArea";
+        }
     }
 }

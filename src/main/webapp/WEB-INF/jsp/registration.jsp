@@ -27,9 +27,10 @@
     </div>
     <div>
       <form:input type="password" path="passwordConfirm"
-                  placeholder="Confirm your password"></form:input>
+                  placeholder="Confirm your password"></form:input><br>
       <form:errors path="password"></form:errors>
         ${passwordError}
+
     </div>
     <button type="submit">Submit</button>
   </form:form>
